@@ -1,0 +1,3 @@
+include ':SimplePayMPModule'
+include ':app'
+rootProject.name = "SimplePayMP"
