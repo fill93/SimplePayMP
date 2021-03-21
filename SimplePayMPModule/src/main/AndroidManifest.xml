@@ -3,7 +3,7 @@
     package="com.df.simplepaympmodule">
 
     <application
-        android:name=".di.App">
+        android:name=".di.AppM">
         <activity android:name=".ui.FillMPCheckoutActivity" />
     </application>
 
