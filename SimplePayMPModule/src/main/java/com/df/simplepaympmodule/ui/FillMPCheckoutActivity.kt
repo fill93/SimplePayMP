@@ -2,7 +2,6 @@ package com.df.simplepaympmodule.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.df.simplepaympmodule.session.FillMPDataSession
@@ -11,6 +10,7 @@ import com.mercadopago.android.px.core.MercadoPagoCheckout
 import com.mercadopago.android.px.model.Payment
 import com.mercadopago.android.px.model.exceptions.MercadoPagoError
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.KoinContextHandler
 
 class FillMPCheckoutActivity : AppCompatActivity() {
 
@@ -51,6 +51,11 @@ class FillMPCheckoutActivity : AppCompatActivity() {
         } else {
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        KoinContextHandler.stop()
     }
 
 }
