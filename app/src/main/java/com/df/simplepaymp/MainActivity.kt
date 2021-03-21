@@ -2,7 +2,6 @@ package com.df.simplepaymp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.df.simplepaympmodule.model.*
 import com.df.simplepaympmodule.session.FillMPHelper
@@ -32,12 +31,10 @@ class MainActivity : AppCompatActivity() {
                     "TEST-7e223cec-c303-43cd-8f56-54c97981cefd",
                     fillItemMPData,
                     successMPPAY = {
-                        Log.i("JKK","S")
-                        Toast.makeText(this,"KLKLKLKLKLKLKLK",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Sucesso ao realizar pagamento!",Toast.LENGTH_SHORT).show()
                     },
                     errorMPPAY = {
-                        Log.i("JKK", "E:::: $it")
-                        Toast.makeText(this, "KLKLKLKLKLKLKLK$it",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Erro ao realizar pagamento! $it",Toast.LENGTH_SHORT).show()
                     }
             )
         }
