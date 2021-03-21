@@ -29,7 +29,7 @@ class FillMPCheckout {
                 //mPMethods.add(FillMPMethodPay("atm"))
 
                 val fillPaymentMethods = FillMPPaymentMethods(fillMPExcludeMethods, 1)
-                val mpItemData = FillMPItemData(fillMPItens, fillMPPayer, fillPaymentMethods)
+                //val mpItemData = FillMPItemData(fillMPItens, fillMPPayer, fillPaymentMethods)
                 try {
                     /*val response = ""
                     FillCheckoutRepository().postFillMPItemDATA(

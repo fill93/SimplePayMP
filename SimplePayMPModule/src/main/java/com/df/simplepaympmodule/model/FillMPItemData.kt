@@ -1,40 +1,33 @@
-package com.df.simplepaympmodule.model;
+package com.df.simplepaympmodule.model
 
-import java.util.List;
+class FillMPItemData(builder: Builder) {
 
-public class FillMPItemData {
+    val itens: List<FillMPItem> = builder.itensIN
+    val payer: FillMPPayer = builder.payerIN
+    val paymentMethods: FillMPPaymentMethods = builder.paymentMethodsIN
 
-    private List<FillMPItem> items;
-    private FillMPPayer payer;
-    private FillMPPaymentMethods paymentMethods;
+    class Builder {
 
-    public FillMPItemData(List<FillMPItem> items, FillMPPayer payer, FillMPPaymentMethods paymentMethods) {
-        this.items = items;
-        this.payer = payer;
-        this.paymentMethods = paymentMethods;
+        lateinit var itensIN: List<FillMPItem>
+        lateinit var payerIN: FillMPPayer
+        lateinit var paymentMethodsIN: FillMPPaymentMethods
+
+        fun setFillMPItens(itens: List<FillMPItem>): Builder{
+            this.itensIN = itens
+            return this
+        }
+        fun setFillMPPayer(payer: FillMPPayer): Builder{
+            this.payerIN = payer
+            return this
+        }
+        fun setFillMPPaymentMethods(paymentMethods: FillMPPaymentMethods): Builder{
+            this.paymentMethodsIN = paymentMethods
+            return this
+        }
+        fun build(): FillMPItemData{
+            return FillMPItemData(this)
+        }
     }
 
-    public List<FillMPItem> getItems() {
-        return items;
-    }
 
-    public void setItems(List<FillMPItem> items) {
-        this.items = items;
-    }
-
-    public FillMPPayer getPayer() {
-        return payer;
-    }
-
-    public void setPayer(FillMPPayer payer) {
-        this.payer = payer;
-    }
-
-    public FillMPPaymentMethods getPaymentMethods() {
-        return paymentMethods;
-    }
-
-    public void setPaymentMethods(FillMPPaymentMethods paymentMethods) {
-        this.paymentMethods = paymentMethods;
-    }
 }

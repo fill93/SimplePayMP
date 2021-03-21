@@ -35,9 +35,7 @@ class FillMPCheckoutActivity : AppCompatActivity() {
                     Toast.makeText(this,"Ap",Toast.LENGTH_SHORT).show()
                 }
             } else if (resultCode == RESULT_CANCELED) {
-                if (data != null && data.extras != null &&
-                    data.extras!!.containsKey(MercadoPagoCheckout.EXTRA_ERROR)
-                ) {
+                if (data.extras != null && data.extras!!.containsKey(MercadoPagoCheckout.EXTRA_ERROR)) {
                     val mercadoPagoError =
                         data.getSerializableExtra(MercadoPagoCheckout.EXTRA_ERROR) as MercadoPagoError?
                     Toast.makeText(this, "Error: $mercadoPagoError", Toast.LENGTH_LONG).show()

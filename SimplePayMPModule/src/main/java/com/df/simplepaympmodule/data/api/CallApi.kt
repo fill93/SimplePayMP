@@ -10,7 +10,7 @@ interface CallApi {
     @POST("checkout/preferences")
     fun postFillCreateProductID(
         @Header("Content-Type")             header: String = "application/json",
-        @Query("access_token")              accessToken: String = "TEST-5641631835692104-091123-8328958ccf078812eb5756755eb1c71d-533881075",
+        @Query("access_token")              accessToken: String,
         @Body                               body: FillMPItemData
     ) : Single<FillMPData>
 
