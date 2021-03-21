@@ -4,21 +4,43 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.df.simplepaympmodule.R
+import com.df.simplepaympmodule.data.repository.FillCheckoutRepository
 import com.df.simplepaympmodule.session.FillMPDataSession
 import com.df.simplepaympmodule.util.Constants
+import com.mercadopago.android.px.configuration.AdvancedConfiguration
 import com.mercadopago.android.px.core.MercadoPagoCheckout
 import com.mercadopago.android.px.model.Payment
 import com.mercadopago.android.px.model.exceptions.MercadoPagoError
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.KoinContextHandler
+import org.json.JSONException
 
 class FillMPCheckoutActivity : AppCompatActivity() {
 
-    private val viewModel: FillMPCheckoutViewModel by viewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.postCreateProductAndCheckout(this)
+        setContentView(R.layout.activity_fill_m_p_checkout)
+        FillCheckoutRepository().postFillMPItemDATA (
+            FillMPDataSession.fillMPItemData,
+            success = {
+                try {
+                    val checkout =
+                        MercadoPagoCheckout.Builder(FillMPDataSession.apiKey, it.id!!)
+                            .setAdvancedConfiguration(
+                                AdvancedConfiguration.Builder()
+                                    .setBankDealsEnabled(false)
+                                    .build()
+                            ).build()
+                    checkout.startPayment(this, Constants.REQUEST_PAYMENT)
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            },
+            error = {
+                FillMPDataSession.errorMPPAY("Erro ao criar o produto")
+                finish()
+            }
+        )
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -51,11 +73,6 @@ class FillMPCheckoutActivity : AppCompatActivity() {
         } else {
             finish()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        KoinContextHandler.stop()
     }
 
 }
