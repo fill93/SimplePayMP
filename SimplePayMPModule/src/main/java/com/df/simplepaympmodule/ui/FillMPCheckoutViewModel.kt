@@ -1,5 +1,5 @@
 package com.df.simplepaympmodule.ui
-
+/*
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import com.df.simplepaympmodule.data.repository.FillCheckoutImpl
@@ -33,4 +33,4 @@ class FillMPCheckoutViewModel(private val repository: FillCheckoutImpl) : ViewMo
         )
     }
 
-}
+}*/

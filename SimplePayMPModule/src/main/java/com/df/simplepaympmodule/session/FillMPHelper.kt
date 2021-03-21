@@ -2,7 +2,6 @@ package com.df.simplepaympmodule.session
 
 import android.app.Activity
 import android.content.Intent
-import com.df.simplepaympmodule.di.SetStartKoin
 import com.df.simplepaympmodule.model.FillMPItemData
 import com.df.simplepaympmodule.ui.FillMPCheckoutActivity
 import com.df.simplepaympmodule.util.ErrroMPPAY
@@ -18,7 +17,6 @@ class FillMPHelper {
             successMPPAY: SuccessMPPAY,
             errorMPPAY: ErrroMPPAY
     ) {
-        SetStartKoin.setKoin(activity)
         FillMPDataSession.token = token
         FillMPDataSession.apiKey = apiKey
         FillMPDataSession.fillMPItemData = fillMPItemData
