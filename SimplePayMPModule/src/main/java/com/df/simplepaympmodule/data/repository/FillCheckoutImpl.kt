@@ -5,9 +5,9 @@ import com.df.simplepaympmodule.model.*
 interface FillCheckoutImpl {
 
     fun postFillMPItemDATA(
-        fillMPItemData: FillMPItemData,
-        success: (data: FillMPData) -> Unit,
-        error: (throwable: Throwable) -> Unit
+            fillMPItemData: FillMPItemData,
+            success: (dataResponse: FillMPDataResponse) -> Unit,
+            error: (throwable: Throwable) -> Unit
     )
 
 }
